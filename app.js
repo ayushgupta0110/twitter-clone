@@ -57,7 +57,7 @@ app.use(authRoutes);
 
 app.get('/',isLoggedIn, (req, res) => {
 
-    res.render('home');  
+    res.render('layouts/main-layout'); 
 })
 
 
