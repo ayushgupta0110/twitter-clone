@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose);  //passportLocalMongoose pkg will automatically add usename and password fields
 
 const User = mongoose.model("User", userSchema);
 

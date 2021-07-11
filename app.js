@@ -16,13 +16,16 @@ mongoose.connect('mongodb://localhost:27017/twitter-clone',
         useFindAndModify: false,
         useCreateIndex: true
     })
-    .then(() => console.log("DB Connected"))
-    .catch((err) => console.log(err));
+    .then(() => console.log("DB Connected"))   //Promises
+    .catch((err) => console.log(err));         //Error Handling
 
+//Basic connection setup steps:     
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.urlencoded({ extended: true }))
+
+//Middleware function to parse the body of the form (alternative to body-parser)
+app.use(express.urlencoded({ extended: true }))  
 
 
 // Routes 
