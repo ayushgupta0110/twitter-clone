@@ -44,7 +44,7 @@ router.post('/login', passport.authenticate('local',
     {
         failureRedirect: '/login',
     }), (req, res) => {
-        res.render('home');
+        res.redirect('/');
 });
     
 
