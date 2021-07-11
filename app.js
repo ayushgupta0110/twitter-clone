@@ -24,15 +24,18 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 app.use(express.static(path.join(__dirname, '/public')));
 
-//Middleware function to parse the body of the form (alternative to body-parser)
+// Middleware function to parse the body of the form (alternative to body-parser)
 app.use(express.urlencoded({ extended: true }))  
-
+// Middleware function to parse json data 
+app.use(express.json());
 
 // Routes 
 
 const authRoutes = require('./routes/authRoutes');
 
+// APIs
 
+const postsApiRoute = require('./routes/api/posts');
 
 app.use(session({
     secret: 'weneedabettersecret',
@@ -50,9 +53,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
+// using Routes
 app.use(authRoutes);
 
+// using <APIs>
+app.use(postsApiRoute);
 
 
 app.get('/',isLoggedIn, (req, res) => {
